@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proprieTerry Mortgage LLC — Bespoke Mortgage Architecture</title>
+  <meta name="description" content="Down-to-earth luxury mortgage architecture by Terry Shelton (NMLS #420420). Clear numbers, 24-hour underwritten pre-approvals, and direct 1-on-1 guidance.">
+  <meta name="theme-color" content="#161412">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="sr-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- =====================================================================
+       FLOATING EDITORIAL HEADER
+       ===================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a href="#hero" class="brand-lockup" aria-label="proprieTerry Mortgage LLC — Home">
+        <span class="header-terry-avatar">
+          <img
+            src="./assets/terry-portrait.jpg"
+            alt="Terry Shelton, Senior Mortgage Loan Officer"
+            width="46"
+            height="46"
+            class="header-terry-avatar__img"
+          >
+        </span>
+        <span class="brand-text">
+          <span class="brand-wordmark">proprie<span>Terry</span></span>
+          <span class="brand-sub">MORTGAGE LLC · NMLS #420420</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <ul class="site-nav__list">
+          <li><a href="#paths" class="site-nav__link">Loan Paths</a></li>
+          <li><a href="#studio" class="site-nav__link">Payment Studio</a></li>
+          <li><a href="#terry" class="site-nav__link">Meet Terry</a></li>
+          <li><a href="#desk" class="site-nav__link">Direct Desk</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button type="button" class="btn btn--brass btn--sm" id="header-book-btn">Book a Call</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ===================================================================
+         01 · CENTERED ARCHITECTURAL HERO — Crown Logo + Action Bar + Panorama
+         =================================================================== -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero-crown">
+          <img
+            src="./assets/logo-full.png"
+            alt="ProprieTerry Mortgage LLC Logo"
+            width="148"
+            height="150"
+            class="hero-crown__logo"
+          >
+        </div>
+
+        <h1 class="hero__title" id="hero-title">
+          Home loans, built around <em>your numbers.</em>
+        </h1>
+
+        <p class="hero__lead">
+          18 years of engineering-grade mortgage clarity with Terry Shelton · NMLS #420420
+        </p>
+
+        <div class="hero-action-bar" role="group" aria-label="Choose your mortgage goal">
+          <div class="hero-intent-pills">
+            <button type="button" class="intent-pill is-active" data-hero-intent="first-home">Buy a Home</button>
+            <button type="button" class="intent-pill" data-hero-intent="next-home">Move Up</button>
+            <button type="button" class="intent-pill" data-hero-intent="refinancing">Refinance</button>
+          </div>
+          <a href="#studio" class="btn btn--brass btn--lg hero-action-bar__cta" id="hero-start-btn">
+            See My Numbers →
+          </a>
+        </div>
+
+        <figure class="hero-panorama">
+          <img
+            src="./assets/hero-residence.jpg"
+            alt="Custom modern gable residence with warm ochre-gold stone chimney and golden interior light reflecting in a calm pool at dusk"
+            width="1280"
+            height="720"
+            fetchpriority="high"
+            class="hero-panorama__img"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         02 · LOAN PATHS — Editorial Split Selector
+         =================================================================== -->
+    <section class="section section--travertine" id="paths" aria-labelledby="paths-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">01 // TAILORED ARCHITECTURE</p>
+          <h2 class="section-title" id="paths-title">Choose the path that fits your next move.</h2>
+        </header>
+
+        <div class="paths-layout reveal-on-scroll">
+          <!-- Left: Editorial Vertical Tabs -->
+          <div class="paths-nav" role="tablist" aria-label="Mortgage paths">
+            <button
+              type="button"
+              role="tab"
+              id="tab-first-home"
+              aria-selected="true"
+              aria-controls="path-folio"
+              class="path-trigger is-active"
+              data-route="first-home"
+            >
+              <span class="path-trigger__index">01</span>
+              <span class="path-trigger__body">
+                <strong>Buying my first home</strong>
+                <span>Smart down-payment structure, seller buydowns &amp; cash-like pre-approval.</span>
+              </span>
+              <span class="path-trigger__arrow" aria-hidden="true">→</span>
+            </button>
+
+            <button
+              type="button"
+              role="tab"
+              id="tab-next-home"
+              aria-selected="false"
+              aria-controls="path-folio"
+              class="path-trigger"
+              data-route="next-home"
+            >
+              <span class="path-trigger__index">02</span>
+              <span class="path-trigger__body">
+                <strong>Buying my next home</strong>
+                <span>Bridge equity to buy before selling, or recast after your current home closes.</span>
+              </span>
+              <span class="path-trigger__arrow" aria-hidden="true">→</span>
+            </button>
+
+            <button
+              type="button"
+              role="tab"
+              id="tab-refinancing"
+              aria-selected="false"
+              aria-controls="path-folio"
+              class="path-trigger"
+              data-route="refinancing"
+            >
+              <span class="path-trigger__index">03</span>
+              <span class="path-trigger__body">
+                <strong>Strategic refinancing</strong>
+                <span>Exact break-even month math, PMI removal &amp; custom terms.</span>
+              </span>
+              <span class="path-trigger__arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <!-- Right: Specification Folio -->
+          <article class="path-folio" id="path-folio" role="tabpanel" aria-labelledby="tab-first-home">
+            <div class="path-folio__head">
+              <div>
+                <p class="eyebrow" id="dossier-code">ROUTE 01 // FOUNDATION PLAN</p>
+                <h3 class="path-folio__title" id="dossier-title">Buying my first home</h3>
+              </div>
+              <div class="subtab-pills" role="group" aria-label="Checklist view">
+                <button type="button" class="subtab-pill is-active" data-subtab="consider">Strategy</button>
+                <button type="button" class="subtab-pill" data-subtab="prepare">Prepare</button>
+                <button type="button" class="subtab-pill" data-subtab="questions">Ask Terry AI</button>
+              </div>
+            </div>
+
+            <div class="path-folio__content">
+              <div class="subtab-pane is-active" data-subtab-pane="consider">
+                <ul class="folio-list" id="dossier-consider-list">
+                  <li><strong>Liquidity beats 20% down:</strong> Keeping $25k in post-closing reserves with low-cost PMI is often safer than draining cash to hit 20%.</li>
+                  <li><strong>Net-pay budgeting:</strong> Banks qualify you on gross income; we design your target payment around actual take-home comfort.</li>
+                  <li><strong>Seller-funded buydowns:</strong> A $15k seller credit drops your rate 2% in Year 1—saving 3× more monthly than a $15k price reduction.</li>
+                </ul>
+              </div>
+
+              <div class="subtab-pane" data-subtab-pane="prepare" hidden>
+                <ul class="folio-list" id="dossier-prepare-list">
+                  <li><strong>2 years of W-2s or tax returns:</strong> Plus 30 days of recent pay stubs (or 24 months of 1099/K-1 history).</li>
+                  <li><strong>60 days of asset statements:</strong> Checking, savings, brokerage, or RSU accounts—pause large transfers before applying.</li>
+                  <li><strong>Sleep-well monthly ceiling:</strong> Your target all-in monthly number and comfortable cash-to-close limit.</li>
+                </ul>
+              </div>
+
+              <div class="subtab-pane" data-subtab-pane="questions" hidden>
+                <div class="folio-questions" id="dossier-questions-list">
+                  <button type="button" class="folio-q-btn" data-ask-ai="What is the 5-year total cost difference between 10% down and 20% down?">
+                    <span>“What is the 5-year total cost difference between 10% down and 20% down?”</span>
+                    <strong>Ask Terry AI →</strong>
+                  </button>
+                  <button type="button" class="folio-q-btn" data-ask-ai="Can you fully underwrite my pre-approval upfront so I compete like cash?">
+                    <span>“Can you fully underwrite my pre-approval upfront so I compete like cash?”</span>
+                    <strong>Ask Terry AI →</strong>
+                  </button>
+                  <button type="button" class="folio-q-btn" data-ask-ai="How does a seller-paid 2-1 rate buydown change my first two years?">
+                    <span>“How does a seller-paid 2-1 rate buydown change my first two years?”</span>
+                    <strong>Ask Terry AI →</strong>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <footer class="path-folio__foot">
+              <button type="button" class="btn btn--outline btn--sm" id="dossier-load-estimator-btn" data-load-preset="first-home">
+                Load in Payment Studio ↓
+              </button>
+              <button type="button" class="btn btn--espresso btn--sm" id="dossier-discuss-btn" data-discuss-route="Buying my first home">
+                Send Route to Terry →
+              </button>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         03 · PAYMENT STUDIO — Warm Ivory Controls + Dark Espresso Monolith
+         =================================================================== -->
+    <section class="section section--ivory" id="studio" aria-labelledby="studio-title">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">02 // PAYMENT STUDIO</p>
+            <h2 class="section-title" id="studio-title">Sculpt your monthly comfort number.</h2>
+          </div>
+
+          <div class="preset-bar" role="group" aria-label="Scenario presets">
+            <button type="button" class="preset-pill" data-estimator-preset="first-home">First Home · $680k</button>
+            <button type="button" class="preset-pill is-active" data-estimator-preset="default">Signature · $750k</button>
+            <button type="button" class="preset-pill" data-estimator-preset="next-home">Next Home · $1.15M</button>
+            <button type="button" class="preset-pill" data-estimator-preset="refinancing">Refi · $950k</button>
+          </div>
+        </header>
+
+        <div class="studio-grid reveal-on-scroll">
+          <!-- Left: Tactile Ivory Inputs -->
+          <form id="payment-estimator-form" class="studio-inputs" novalidate aria-label="Mortgage payment parameters">
+            <div class="control-block">
+              <div class="control-block__head">
+                <label for="input-home-price" class="control-label">Purchase Price</label>
+                <div class="num-pill">
+                  <span aria-hidden="true">$</span>
+                  <input type="text" id="input-home-price" name="homePrice" inputmode="numeric" pattern="[0-9,]*" value="750,000">
+                </div>
+              </div>
+              <input type="range" id="slider-home-price" min="200000" max="3500000" step="5000" value="750000" class="luxury-range" aria-label="Purchase Price slider">
+            </div>
+
+            <div class="control-block">
+              <div class="control-block__head">
+                <label for="input-down-dollar" class="control-label">Down Payment</label>
+                <div class="dual-pills">
+                  <div class="num-pill">
+                    <span aria-hidden="true">$</span>
+                    <input type="text" id="input-down-dollar" name="downDollar" inputmode="numeric" pattern="[0-9,]*" value="150,000" aria-label="Down payment in dollars">
+                  </div>
+                  <div class="num-pill num-pill--pct">
+                    <input type="text" id="input-down-pct" name="downPct" inputmode="decimal" value="20" aria-label="Down payment percentage">
+                    <span aria-hidden="true">%</span>
+                  </div>
+                </div>
+              </div>
+              <input type="range" id="slider-down-pct" min="3" max="50" step="1" value="20" class="luxury-range" aria-label="Down payment percentage slider">
+              <p class="ltv-note" id="ltv-status-badge">80% LTV · No Mortgage Insurance (PMI) required</p>
+            </div>
+
+            <div class="control-split">
+              <div class="control-block">
+                <div class="control-block__head">
+                  <label for="input-interest-rate" class="control-label">Interest Rate</label>
+                  <div class="num-pill num-pill--pct">
+                    <input type="text" id="input-interest-rate" name="interestRate" inputmode="decimal" value="6.125">
+                    <span aria-hidden="true">%</span>
+                  </div>
+                </div>
+                <input type="range" id="slider-interest-rate" min="3.5" max="9.0" step="0.125" value="6.125" class="luxury-range" aria-label="Interest rate slider">
+              </div>
+
+              <fieldset class="term-group">
+                <legend class="control-label">Loan Term</legend>
+                <div class="term-radios">
+                  <label class="term-chip">
+                    <input type="radio" name="loanTerm" value="30" checked>
+                    <span>30-Yr</span>
+                  </label>
+                  <label class="term-chip">
+                    <input type="radio" name="loanTerm" value="20">
+                    <span>20-Yr</span>
+                  </label>
+                  <label class="term-chip">
+                    <input type="radio" name="loanTerm" value="15">
+                    <span>15-Yr</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <details class="escrow-drawer" id="escrow-breakdown-drawer">
+              <summary class="escrow-drawer__summary">
+                <span>+ Customize Property Tax, Insurance, HOA &amp; PMI</span>
+                <span class="escrow-drawer__hint">Optional escrow</span>
+              </summary>
+              <div class="escrow-drawer__body">
+                <div class="escrow-toggle-row">
+                  <span>Include escrow &amp; HOA in monthly total</span>
+                  <label class="switch-label" for="toggle-include-optional">
+                    <input type="checkbox" id="toggle-include-optional" checked>
+                    <span>Enabled</span>
+                  </label>
+                </div>
+                <div class="escrow-grid">
+                  <div class="mini-field">
+                    <label for="input-prop-tax">Property Tax / mo</label>
+                    <div class="num-pill num-pill--sm">
+                      <span aria-hidden="true">$</span>
+                      <input type="text" id="input-prop-tax" name="propTax" inputmode="numeric" pattern="[0-9,]*" value="719">
+                    </div>
+                  </div>
+                  <div class="mini-field">
+                    <label for="input-home-ins">Home Insurance / mo</label>
+                    <div class="num-pill num-pill--sm">
+                      <span aria-hidden="true">$</span>
+                      <input type="text" id="input-home-ins" name="homeIns" inputmode="numeric" pattern="[0-9,]*" value="165">
+                    </div>
+                  </div>
+                  <div class="mini-field">
+                    <label for="input-hoa">HOA Dues / mo</label>
+                    <div class="num-pill num-pill--sm">
+                      <span aria-hidden="true">$</span>
+                      <input type="text" id="input-hoa" name="hoa" inputmode="numeric" pattern="[0-9,]*" value="0">
+                    </div>
+                  </div>
+                  <div class="mini-field">
+                    <label for="input-pmi">PMI / mo</label>
+                    <div class="num-pill num-pill--sm">
+                      <span aria-hidden="true">$</span>
+                      <input type="text" id="input-pmi" name="pmi" inputmode="numeric" pattern="[0-9,]*" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+          </form>
+
+          <!-- Right: Dark Espresso Output Monolith -->
+          <div class="studio-monolith" role="region" aria-live="polite" aria-label="Monthly payment breakdown">
+            <div class="monolith-kpis">
+              <span>LOAN <strong id="out-loan-amount">$600,000</strong></span>
+              <span>EST. APR <strong id="out-apr-val">6.218%</strong></span>
+              <span>LTV <strong id="out-ltv-val">80.0%</strong></span>
+            </div>
+
+            <div class="monolith-hero-readout">
+              <div class="donut-box">
+                <svg class="donut-svg" viewBox="0 0 220 220" role="img" aria-label="Monthly payment breakdown chart">
+                  <circle cx="110" cy="110" r="84" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="18"></circle>
+                  <circle id="donut-seg-pi" cx="110" cy="110" r="84" fill="none" stroke="#d8ad5c" stroke-width="18" transform="rotate(-90 110 110)"></circle>
+                  <circle id="donut-seg-tax" cx="110" cy="110" r="84" fill="none" stroke="#f2ece1" stroke-width="18" transform="rotate(-90 110 110)"></circle>
+                  <circle id="donut-seg-ins" cx="110" cy="110" r="84" fill="none" stroke="#7c907e" stroke-width="18" transform="rotate(-90 110 110)"></circle>
+                  <circle id="donut-seg-other" cx="110" cy="110" r="84" fill="none" stroke="#8a8175" stroke-width="18" transform="rotate(-90 110 110)"></circle>
+                </svg>
+                <div class="donut-center">
+                  <span class="donut-center__eyebrow">EST. MONTHLY</span>
+                  <strong class="donut-center__total" id="out-total-monthly">$4,530</strong>
+                  <span class="donut-center__unit">/ month</span>
+                </div>
+              </div>
+
+              <div class="monolith-breakdown">
+                <div class="m-row">
+                  <span><i class="dot dot--gold"></i>Principal &amp; Interest</span>
+                  <strong id="out-pi-val">$3,646</strong>
+                </div>
+                <div class="m-row">
+                  <span><i class="dot dot--ivory"></i>Property Tax</span>
+                  <strong id="out-tax-val">$719</strong>
+                </div>
+                <div class="m-row">
+                  <span><i class="dot dot--sage"></i>Home Insurance</span>
+                  <strong id="out-ins-val">$165</strong>
+                </div>
+                <div class="m-row">
+                  <span><i class="dot dot--stone"></i>HOA &amp; PMI</span>
+                  <strong id="out-other-val">$0</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="monolith-actions">
+              <button type="button" class="btn btn--glass btn--sm" id="open-assumptions-btn">
+                5-Yr Equity &amp; Assumptions
+              </button>
+              <button type="button" class="btn btn--brass btn--sm" id="send-estimate-to-terry-btn">
+                Attach to Terry’s Desk →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         04 · MEET TERRY — Unobstructed Editorial Portrait & Story
+         =================================================================== -->
+    <section class="section section--espresso" id="terry" aria-labelledby="terry-title">
+      <div class="container terry-spread reveal-on-scroll">
+        <div class="terry-spread__portrait">
+          <figure class="portrait-card">
+            <img
+              src="./assets/terry-portrait.jpg"
+              alt="Portrait of Terry Shelton, Founder and Senior Loan Officer"
+              width="480"
+              height="480"
+              loading="lazy"
+              class="portrait-card__img"
+            >
+            <figcaption class="portrait-card__cap">
+              <div>
+                <strong>Terry Shelton</strong>
+                <span>Founder &amp; Senior Loan Officer</span>
+              </div>
+              <span class="portrait-card__nmls">NMLS #420420</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="terry-spread__copy">
+          <p class="eyebrow eyebrow--gold">03 // MEET YOUR ADVISOR</p>
+          <h2 class="section-title section-title--light" id="terry-title">
+            No call centers. Just one advisor from first sketch to keys.
+          </h2>
+          <p class="terry-prose">
+            Trained in structural engineering before spending 18 years in residential lending, I built <strong>proprieTerry Mortgage LLC</strong> to bring architectural calm to home financing. You work directly with me—every calculation, every rate lock, every closing milestone.
+          </p>
+
+          <details class="dark-drawer">
+            <summary class="dark-drawer__summary">
+              <span>+ What happens on our first 15-minute call?</span>
+              <span>3 steps</span>
+            </summary>
+            <ol class="dark-drawer__list">
+              <li><strong>01. Your comfort number:</strong> We align on net monthly take-home comfort and post-closing reserves—not bank maximums.</li>
+              <li><strong>02. Three side-by-side options:</strong> Live screen-share comparing down payments, seller rate buydowns, and 5-year equity.</li>
+              <li><strong>03. 24-hr underwritten letter:</strong> When you find the right home, I call the listing agent personally to back your offer.</li>
+            </ol>
+          </details>
+
+          <div class="terry-cta-strip">
+            <button type="button" class="btn btn--brass btn--lg" id="open-scheduler-btn">Book a Call</button>
+            <a href="mailto:terry@proprieterry.com" class="btn btn--glass btn--lg">Email Terry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         05 · THE ARCHITECTURAL STUDY — Dedicated Space for Studio Interior
+         =================================================================== -->
+    <section class="section section--ivory" id="studio-space" aria-labelledby="studio-space-title">
+      <div class="container studio-space-grid reveal-on-scroll">
+        <div class="studio-space__copy">
+          <p class="eyebrow">04 // THE STUDIO PHILOSOPHY</p>
+          <h2 class="section-title" id="studio-space-title">
+            Grounded spaces, built on clear math.
+          </h2>
+          <p class="studio-space__lead">
+            A mortgage shouldn’t feel like a noisy trading floor. We treat your financing like a quiet architectural consultation—unhurried, transparent, and tailored to the life you’re building inside.
+          </p>
+          <ul class="studio-space__points">
+            <li><strong>Direct 1-on-1 counsel:</strong> Never routed to an offshore queue or junior processor.</li>
+            <li><strong>Listing-agent advocacy:</strong> Terry personally calls the seller’s agent when your offer goes in.</li>
+            <li><strong>24/7 AI backup:</strong> Ask <strong>Terry AI</strong> anytime to model down-payment or buydown trade-offs.</li>
+          </ul>
+        </div>
+
+        <figure class="studio-space__media">
+          <img
+            src="./assets/interior-study.jpg"
+            alt="Sunlit architectural kitchen and study with travertine island and warm oak cabinetry"
+            width="900"
+            height="500"
+            loading="lazy"
+            decoding="async"
+            class="studio-space__img"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         05 · DIRECT TO TERRY'S DESK — Clean Inquiry Studio
+         =================================================================== -->
+    <section class="section section--travertine" id="desk" aria-labelledby="desk-title">
+      <div class="container desk-layout reveal-on-scroll">
+        <div class="desk-intro">
+          <div class="desk-crest-lockup">
+            <img
+              src="./assets/logo-full.png"
+              alt="proprieTerry Mortgage LLC Crest"
+              width="120"
+              height="122"
+              loading="lazy"
+              class="desk-crest-lockup__img"
+            >
+          </div>
+          <p class="eyebrow">05 // DIRECT TO TERRY’S DESK</p>
+          <h2 class="section-title" id="desk-title">Send your scenario straight to Terry.</h2>
+          <p class="desk-intro__copy">
+            Whether you’re 6 months out or writing an offer this weekend, drop a quick note below. Terry responds personally within 2 business hours—never shared, never sold.
+          </p>
+
+          <!-- Living Mascot Inline Invitation -->
+          <div class="mascot-inline-card">
+            <img src="./assets/terry-mascot.png" alt="Terry AI Mascot" width="48" height="78" loading="lazy" class="mascot-inline-card__img">
+            <div>
+              <strong>Want instant answers first?</strong>
+              <p>Chat with <strong>Terry AI</strong> anytime for 10% vs. 20% down math or buydown examples.</p>
+              <button type="button" class="link-btn" id="desk-open-ai-btn">Open Terry AI Concierge →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="desk-form-card">
+          <div class="attached-banner" id="attached-context-banner" hidden>
+            <div>
+              <span class="attached-banner__label">ATTACHED SCENARIO</span>
+              <p class="attached-banner__text" id="attached-context-summary"></p>
+            </div>
+            <button type="button" class="attached-banner__clear" id="clear-context-btn" aria-label="Remove attached scenario">✕</button>
+          </div>
+
+          <form id="talk-with-terry-form" name="talk-with-terry" method="POST" data-netlify="true" class="studio-form" novalidate>
+            <input type="hidden" name="form-name" value="talk-with-terry">
+            <div class="field-group">
+              <label for="visitor-name" class="field-label">Your name *</label>
+              <input
+                type="text"
+                id="visitor-name"
+                name="visitorName"
+                autocomplete="name"
+                required
+                minlength="2"
+                placeholder="Alex Rivera"
+                class="field-input"
+                aria-describedby="err-visitor-name"
+              >
+              <p class="field-error" id="err-visitor-name" role="alert" hidden>Please enter your name.</p>
+            </div>
+
+            <div class="field-group">
+              <label for="visitor-contact" class="field-label">Email or phone *</label>
+              <input
+                type="text"
+                id="visitor-contact"
+                name="visitorContact"
+                autocomplete="email"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+                minlength="5"
+                placeholder="alex@domain.com or 248-420-6969"
+                class="field-input"
+                aria-describedby="err-visitor-contact"
+              >
+              <p class="field-error" id="err-visitor-contact" role="alert" hidden>Please provide an email or phone number.</p>
+            </div>
+
+            <div class="field-group">
+              <div class="field-label-row">
+                <label for="visitor-topic" class="field-label">What would you like to discuss? *</label>
+                <div class="topic-pills" role="group" aria-label="Quick topic templates">
+                  <button type="button" class="topic-pill" data-topic-insert="Buying my first home — ">First home</button>
+                  <button type="button" class="topic-pill" data-topic-insert="Buying my next home — ">Next home</button>
+                  <button type="button" class="topic-pill" data-topic-insert="Refinancing — ">Refinance</button>
+                </div>
+              </div>
+              <textarea
+                id="visitor-topic"
+                name="visitorTopic"
+                rows="3"
+                required
+                minlength="4"
+                placeholder="Target price range, timeline, or a question about down payments and rates..."
+                class="field-textarea"
+                aria-describedby="err-visitor-topic"
+              ></textarea>
+              <p class="field-error" id="err-visitor-topic" role="alert" hidden>Please add a short note.</p>
+            </div>
+
+            <input type="hidden" id="attached-estimate-payload" name="attachedEstimate" value="">
+
+            <button type="submit" class="btn btn--espresso btn--lg btn--full">Send to Terry →</button>
+          </form>
+
+          <div class="form-success" id="contact-success-panel" hidden aria-live="polite">
+            <p class="eyebrow" id="contact-ref-code">REF // PT-2026</p>
+            <h4>Your note is on Terry’s desk.</h4>
+            <p id="contact-success-summary">Terry will reach out shortly.</p>
+            <div class="form-success__actions">
+              <button type="button" class="btn btn--espresso btn--sm" id="download-ics-btn">Download .ICS Hold</button>
+              <a href="mailto:terry@proprieterry.com" class="btn btn--outline btn--sm" id="direct-mailto-fallback">Open Email ↗</a>
+              <button type="button" class="link-btn" id="reset-contact-form-btn">Send another note</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       LIVING TERRY AI MASCOT CONCIERGE (Floating Bottom-Right)
+       ===================================================================== -->
+  <aside class="terry-ai-widget" id="terry-ai-widget" aria-label="Terry AI Mascot Concierge">
+    <div class="terry-ai-drawer" id="terry-ai-drawer" hidden>
+      <header class="terry-ai-drawer__head">
+        <div class="terry-ai-drawer__identity">
+          <div class="terry-ai-avatar-ring">
+            <img src="./assets/terry-mascot.png" alt="Terry AI Mascot" width="40" height="65">
+          </div>
+          <div>
+            <span class="terry-ai-status"><i aria-hidden="true"></i> TERRY AI · LIVE CONCIERGE</span>
+            <strong class="terry-ai-title">Ask Terry AI</strong>
+          </div>
+        </div>
+        <button type="button" class="terry-ai-close" id="close-ai-drawer-btn" aria-label="Minimize Terry AI">✕</button>
+      </header>
+
+      <div class="voice-mode-bar">
+        <button type="button" class="voice-mic-btn" id="voice-mic-toggle-btn" aria-pressed="false">
+          <span aria-hidden="true">🎙️</span>
+          <span id="voice-mic-status-label">Tap to speak with Terry AI</span>
+          <span class="voice-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        </button>
+      </div>
+
+      <div class="terry-ai-messages" id="terry-ai-messages" aria-live="polite">
+        <div class="chat-msg chat-msg--bot">
+          <img src="./assets/terry-mascot.png" alt="" width="30" height="49" class="chat-msg__avatar">
+          <div class="chat-msg__bubble">
+            <p>Good day! I’m <strong>Terry AI</strong>. Ask me about 10% vs. 20% down, seller rate buydowns, or your current <strong id="chat-greeting-total">$4,530/mo</strong> scenario.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="terry-ai-chips">
+        <button type="button" class="chat-prompt-chip" data-chat-prompt="What is the 5-year difference between 10% down and 20% down?">10% vs 20% down</button>
+        <button type="button" class="chat-prompt-chip" data-chat-prompt="How fast can I get an underwritten pre-approval?">24-hr pre-approval</button>
+        <button type="button" class="chat-prompt-chip" data-chat-prompt="Explain my current monthly payment estimate.">Explain payment</button>
+      </div>
+
+      <form class="terry-ai-form" id="terry-ai-form" novalidate>
+        <label for="terry-ai-input" class="visually-hidden">Ask Terry AI a question</label>
+        <input
+          type="text"
+          id="terry-ai-input"
+          name="aiQuery"
+          placeholder="Ask about rates, PMI, or buydowns..."
+          autocomplete="off"
+          class="terry-ai-input"
+        >
+        <button type="submit" class="btn btn--espresso btn--sm">Ask</button>
+      </form>
+    </div>
+
+    <button
+      type="button"
+      class="terry-ai-launcher"
+      id="toggle-ai-drawer-btn"
+      aria-expanded="false"
+      aria-controls="terry-ai-drawer"
+    >
+      <span class="terry-ai-launcher__mascot">
+        <img src="./assets/terry-mascot.png" alt="" width="44" height="72">
+      </span>
+      <span class="terry-ai-launcher__text">
+        <span class="terry-ai-launcher__pulse" aria-hidden="true"></span>
+        <strong class="terry-ai-launcher__label">Talk to Terry AI</strong>
+      </span>
+    </button>
+  </aside>
+
+  <!-- =====================================================================
+       FOOTER — Popping Full Logo Seal + NMLS Disclosures
+       ===================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-seal">
+            <img
+              src="./assets/logo-full.png"
+              alt="proprieTerry Mortgage LLC Full Logo"
+              width="130"
+              height="132"
+              loading="lazy"
+              class="footer-logo-seal__img"
+            >
+          </div>
+          <div>
+            <p class="footer-title"><strong>proprieTerry</strong> Mortgage LLC</p>
+            <p class="footer-tagline">
+              Down-to-earth luxury residential mortgage architecture · Direct 1-on-1 advisory from first sketch to keys.
+            </p>
+            <div class="footer-links">
+              <a href="#paths">Loan Paths</a>
+              <a href="#studio">Payment Studio</a>
+              <button type="button" class="link-btn" id="footer-assumptions-btn">Assumptions &amp; 5-Yr Schedule</button>
+              <button type="button" class="link-btn" id="footer-scheduler-btn">Book 15-Min Call</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="compliance-badges" aria-label="Mortgage regulatory seals">
+          <div class="compliance-seal" title="Equal Housing Lender">
+            <svg viewBox="0 0 48 44" width="34" height="31" aria-hidden="true" fill="none">
+              <path d="M24 3L3 20h6v19h30V20h6L24 3z" stroke="currentColor" stroke-width="2.75" stroke-linejoin="round"/>
+              <rect x="15" y="20" width="18" height="3.5" fill="currentColor"/>
+              <rect x="15" y="27" width="18" height="3.5" fill="currentColor"/>
+            </svg>
+            <div class="compliance-seal__text">
+              <strong>EQUAL HOUSING LENDER</strong>
+              <span>Federal Fair Housing Act</span>
+            </div>
+          </div>
+
+          <a
+            href="https://www.nmlsconsumeraccess.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="compliance-seal"
+          >
+            <svg viewBox="0 0 44 44" width="30" height="30" aria-hidden="true" fill="none">
+              <path d="M22 3L6 9.5v11.2c0 10.1 6.8 19.3 16 21.8 9.2-2.5 16-11.7 16-21.8V9.5L22 3z" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M15.5 22.5l4.2 4.2 9-9.2" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="compliance-seal__text">
+              <strong>NMLS CONSUMER ACCESS ↗</strong>
+              <span>nmlsconsumeraccess.org</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="compliance-ledger">
+        <div class="nmls-id-bar">
+          <span><strong>INDIVIDUAL LICENSE:</strong> Terry Shelton · Senior Mortgage Loan Officer · NMLS ID #420420</span>
+          <span>|</span>
+          <span><strong>COMPANY LICENSE:</strong> proprieTerry Mortgage LLC · NMLS ID #420420</span>
+          <span>|</span>
+          <span><strong>DIRECT PHONE:</strong> 248-420-6969</span>
+        </div>
+        <p class="compliance-fineprint">
+          <strong>Regulatory &amp; TILA/RESPA Disclosure:</strong> <strong>proprieTerry</strong> Mortgage LLC is an Equal Housing Lender. Licensed by the California Department of Financial Protection and Innovation under the California Residential Mortgage Lending Act; Washington Department of Financial Institutions Consumer Loan Act; and Oregon Division of Financial Regulation. Monthly payment scenarios, interest rates, APRs, and property tax figures shown on this site are for illustrative educational planning only, do not constitute an official Loan Estimate (LE) or commitment to lend, and are subject to borrower credit, property underwriting, and market adjustments. © 2026 proprieTerry Mortgage LLC. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODALS (<dialog closedby="any">)
+       ===================================================================== -->
+  <dialog class="studio-modal" id="scheduler-dialog" closedby="any" aria-labelledby="scheduler-modal-title">
+    <div class="studio-modal__box">
+      <header class="studio-modal__header">
+        <div class="modal-brand-head">
+          <span class="modal-crest-mini"><img src="./assets/logo-mark.png" alt="" width="36" height="38"></span>
+          <div>
+            <p class="eyebrow">CALENDAR // 15-MINUTE INTRO CALL</p>
+            <h3 id="scheduler-modal-title">Reserve a time with Terry Shelton</h3>
+          </div>
+        </div>
+        <form method="dialog">
+          <button type="submit" class="modal-close" aria-label="Close modal">✕</button>
+        </form>
+      </header>
+      <div class="studio-modal__body">
+        <form id="scheduler-form" name="intro-call-scheduler" method="POST" data-netlify="true" class="studio-form" novalidate>
+          <input type="hidden" name="form-name" value="intro-call-scheduler">
+          <fieldset class="slot-fieldset">
+            <legend class="field-label">Select a window (Pacific Time)</legend>
+            <div class="slot-grid">
+              <label class="slot-card"><input type="radio" name="callSlot" value="Tomorrow • 10:00 AM PT" checked><span><strong>Tomorrow</strong> · 10:00 AM PT</span></label>
+              <label class="slot-card"><input type="radio" name="callSlot" value="Tomorrow • 2:30 PM PT"><span><strong>Tomorrow</strong> · 2:30 PM PT</span></label>
+              <label class="slot-card"><input type="radio" name="callSlot" value="Thursday • 11:00 AM PT"><span><strong>Thursday</strong> · 11:00 AM PT</span></label>
+              <label class="slot-card"><input type="radio" name="callSlot" value="Friday • 9:30 AM PT"><span><strong>Friday</strong> · 9:30 AM PT</span></label>
+            </div>
+          </fieldset>
+          <div class="form-row-split">
+            <div class="field-group">
+              <label for="sched-name" class="field-label">Your name *</label>
+              <input type="text" id="sched-name" name="schedName" autocomplete="name" required placeholder="Alex Rivera" class="field-input">
+            </div>
+            <div class="field-group">
+              <label for="sched-contact" class="field-label">Email or phone *</label>
+              <input type="text" id="sched-contact" name="schedContact" autocomplete="email" autocorrect="off" autocapitalize="off" required placeholder="alex@domain.com" class="field-input">
+            </div>
+          </div>
+          <button type="submit" class="btn btn--espresso btn--lg btn--full">Confirm 15-Min Intro Call</button>
+        </form>
+        <div class="form-success" id="scheduler-success" hidden aria-live="polite">
+          <p class="eyebrow">RESERVED // 15-MIN INTRO CALL</p>
+          <h4 id="scheduler-success-title">Time held with Terry Shelton</h4>
+          <p id="scheduler-success-copy">Download the calendar invite below or call 248-420-6969 anytime.</p>
+          <button type="button" class="btn btn--espresso btn--sm" id="scheduler-download-ics">Download .ICS Invite</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="studio-modal" id="assumptions-dialog" closedby="any" aria-labelledby="assumptions-modal-title">
+    <div class="studio-modal__box">
+      <header class="studio-modal__header">
+        <div class="modal-brand-head">
+          <span class="modal-crest-mini"><img src="./assets/logo-mark.png" alt="" width="36" height="38"></span>
+          <div>
+            <p class="eyebrow">TRANSPARENCY // 5-YEAR SCHEDULE</p>
+            <h3 id="assumptions-modal-title">Assumptions &amp; 5-Year Equity Snapshot</h3>
+          </div>
+        </div>
+        <form method="dialog">
+          <button type="submit" class="modal-close" aria-label="Close modal">✕</button>
+        </form>
+      </header>
+      <div class="studio-modal__body">
+        <dl class="assumptions-grid">
+          <div class="assumption-item"><dt>Principal Paid (5 Yrs)</dt><dd id="modal-5yr-principal">$52,410</dd></div>
+          <div class="assumption-item"><dt>Interest Paid (5 Yrs)</dt><dd id="modal-5yr-interest">$166,350</dd></div>
+          <div class="assumption-item"><dt>Remaining Balance (Yr 5)</dt><dd id="modal-5yr-balance">$547,590</dd></div>
+          <div class="assumption-item"><dt>Estimated APR</dt><dd id="modal-5yr-apr">6.218%</dd></div>
+        </dl>
+        <p class="assumptions-note">
+          Estimates assume fixed-rate amortization, ~1.15% annual property tax baseline, and 0.26% home insurance baseline when optional escrow is enabled. APR reflects illustrative lender/title fees (~0.85% of loan amount). Not a formal Loan Estimate.
+        </p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
