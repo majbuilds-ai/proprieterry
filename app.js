@@ -103,15 +103,16 @@
   }
 
   /* ========================================================================
-     1. SCROLL PROGRESS
+     1. SECTION NAVIGATION
      ======================================================================== */
-  const progressBar = $('#scroll-progress-bar');
-  window.addEventListener('scroll', () => {
-    if (!progressBar) return;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
-    progressBar.style.width = `${pct.toFixed(1)}%`;
-  }, { passive: true });
+  function scrollToSection(id) {
+    document.dispatchEvent(new Event('section-navigation'));
+    document.getElementById(id)?.scrollIntoView();
+  }
+
+  function announcePathContentChange() {
+    $('.path-folio__content')?.dispatchEvent(new Event('path-content-change'));
+  }
 
   /* ========================================================================
      2. ROUTE DOSSIER TABS
@@ -119,18 +120,14 @@
   function renderRoute(routeKey) {
     const data = ROUTE_DATA[routeKey];
     if (!data) return;
+    const routeChanged = state.route !== routeKey;
     state.route = routeKey;
 
     $$('.intent-pill').forEach((pill) => {
-    pill.addEventListener('click', () => {
-      const intent = pill.dataset.heroIntent;
-      $$('.intent-pill').forEach((p) => p.classList.toggle('is-active', p === pill));
-      renderRoute(intent);
-      applyPreset(intent);
+      pill.classList.toggle('is-active', pill.dataset.heroIntent === routeKey);
     });
-  });
 
-  $$('.path-trigger').forEach((card) => {
+    $$('.path-trigger').forEach((card) => {
       const active = card.dataset.route === routeKey;
       card.classList.toggle('is-active', active);
       card.setAttribute('aria-selected', String(active));
@@ -155,12 +152,12 @@
     if (discussBtn) discussBtn.dataset.discussRoute = data.title;
 
     announce(`Selected route: ${data.title}`);
+    if (routeChanged) announcePathContentChange();
   }
 
   $$('.intent-pill').forEach((pill) => {
     pill.addEventListener('click', () => {
       const intent = pill.dataset.heroIntent;
-      $$('.intent-pill').forEach((p) => p.classList.toggle('is-active', p === pill));
       renderRoute(intent);
       applyPreset(intent);
     });
@@ -172,6 +169,7 @@
 
   $$('.subtab-pill').forEach((btn) => {
     btn.addEventListener('click', () => {
+      if (btn.classList.contains('is-active')) return;
       const target = btn.dataset.subtab;
       $$('.subtab-pill').forEach((b) => b.classList.toggle('is-active', b === btn));
       $$('.subtab-pane').forEach((pane) => {
@@ -179,6 +177,7 @@
         pane.classList.toggle('is-active', match);
         pane.hidden = !match;
       });
+      announcePathContentChange();
     });
   });
 
@@ -194,18 +193,42 @@
   $('#dossier-load-estimator-btn')?.addEventListener('click', (e) => {
     const presetKey = e.currentTarget.dataset.loadPreset || 'first-home';
     applyPreset(presetKey);
-    document.getElementById('estimator')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection('studio');
   });
 
   $('#dossier-discuss-btn')?.addEventListener('click', (e) => {
     const routeTitle = e.currentTarget.dataset.discussRoute || 'Buying my first home';
     attachContextToDesk(`Route: ${routeTitle} · Current estimate ${fmtMoney(state.lastCalc?.total || 4530)}/mo`);
-    document.getElementById('desk')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection('desk');
   });
 
   /* ========================================================================
      3. PAYMENT STUDIO CALCULATOR & DONUT CHART
      ======================================================================== */
+  const payoffYears = $$('.payoff__year');
+  let selectedPayoffYear = payoffYears.length - 1;
+
+  function renderPayoff() {
+    const years = state.lastCalc.years;
+    const scale = Math.max(1, years.at(-1).principal);
+    payoffYears.forEach((button, index) => {
+      const { principal } = years[index];
+      button.style.setProperty('--payoff-height', principal / scale);
+      button.setAttribute('aria-pressed', String(index === selectedPayoffYear));
+      button.setAttribute('aria-label', `Year ${index + 1}, ${fmtMoney(principal)} principal repaid`);
+    });
+    const { principal, balance } = years[selectedPayoffYear];
+    $('#payoff-amount').textContent = fmtMoney(principal);
+    $('#payoff-caption').textContent = `Repaid by year ${selectedPayoffYear + 1} · ${fmtMoney(balance)} remaining`;
+  }
+
+  payoffYears.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      selectedPayoffYear = index;
+      renderPayoff();
+    });
+  });
+
   function calculateMortgage() {
     const price = Math.max(100000, state.price);
     const downPct = Math.min(80, Math.max(3, state.downPct));
@@ -234,6 +257,7 @@
     let balance = loanAmount;
     let totalInterest5Yr = 0;
     let totalPrincipal5Yr = 0;
+    const years = [];
     const loopMonths = Math.min(60, months);
     for (let i = 0; i < loopMonths; i++) {
       const interestPayment = balance * monthlyRate;
@@ -241,6 +265,7 @@
       totalInterest5Yr += interestPayment;
       totalPrincipal5Yr += principalPayment;
       balance -= principalPayment;
+      if ((i + 1) % 12 === 0) years.push({ principal: totalPrincipal5Yr, balance });
     }
 
     const estApr = state.rate + 0.093;
@@ -259,12 +284,14 @@
       other,
       total,
       estApr,
+      years,
       totalPrincipal5Yr,
       totalInterest5Yr,
       balance5Yr: balance
     };
 
     renderEstimator();
+    renderPayoff();
   }
 
   function renderEstimator() {
@@ -474,7 +501,7 @@
     if (!c) return;
     const summary = `${fmtMoney(c.price)} home · ${Math.round(c.downPct)}% down (${fmtMoney(c.downDollar)}) · ${state.rate.toFixed(3)}% (${state.term}-yr) → Est. ${fmtMoney(c.total)}/mo`;
     attachContextToDesk(summary);
-    document.getElementById('desk')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection('desk');
   });
 
   $$('.topic-pill').forEach((pill) => {
@@ -548,14 +575,37 @@
      ======================================================================== */
   const aiDrawer = $('#terry-ai-drawer');
   const aiToggleBtn = $('#toggle-ai-drawer-btn');
+  const heroAiBtn = $('#hero-ask-ai-btn');
   const aiMessages = $('#terry-ai-messages');
   const aiInput = $('#terry-ai-input');
+  let heroConciergeInView = false;
+  let aiOpener;
 
-  function setAiDrawerOpen(open) {
+  function updateAiLauncher() {
+    if (aiToggleBtn) aiToggleBtn.hidden = heroConciergeInView && document.activeElement !== aiToggleBtn;
+  }
+
+  if (heroAiBtn && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      heroConciergeInView = entry.intersectionRatio >= .6;
+      updateAiLauncher();
+    }, { rootMargin: '-77px 0px 0px 0px', threshold: .6 }).observe(heroAiBtn);
+    aiToggleBtn?.addEventListener('blur', updateAiLauncher);
+  }
+
+  function setAiDrawerOpen(open, opener = document.activeElement) {
     if (!aiDrawer || !aiToggleBtn) return;
+    if (open && aiDrawer.hidden) aiOpener = opener;
     aiDrawer.hidden = !open;
     aiToggleBtn.setAttribute('aria-expanded', String(open));
-    if (open) aiInput?.focus();
+    heroAiBtn?.setAttribute('aria-expanded', String(open));
+    if (open) {
+      aiInput?.focus({ preventScroll: true });
+    } else {
+      const bounds = aiOpener?.getBoundingClientRect();
+      const visible = bounds?.width > 0 && bounds.top < innerHeight && bounds.bottom > 77;
+      (visible ? aiOpener : heroConciergeInView ? heroAiBtn : aiToggleBtn)?.focus({ preventScroll: true });
+    }
   }
 
   function openTerryAiDrawer(initialPrompt) {
@@ -565,9 +615,9 @@
     }
   }
 
-  aiToggleBtn?.addEventListener('click', () => setAiDrawerOpen(aiDrawer.hidden));
+  aiToggleBtn?.addEventListener('click', () => setAiDrawerOpen(aiDrawer.hidden, aiToggleBtn));
   $('#close-ai-drawer-btn')?.addEventListener('click', () => setAiDrawerOpen(false));
-  $('#hero-ask-ai-btn')?.addEventListener('click', () => openTerryAiDrawer());
+  heroAiBtn?.addEventListener('click', () => setAiDrawerOpen(aiDrawer.hidden, heroAiBtn));
 
   function appendChatMessage(text, isUser = false) {
     if (!aiMessages) return;
